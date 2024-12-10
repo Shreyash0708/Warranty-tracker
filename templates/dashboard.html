@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Warranty Tracker - Dashboard</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #121212;
+            color: white;
+        }
+
+        header {
+            background-color: #1E1E1E;
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header h1 {
+            color: #FF6584;
+            margin: 0;
+        }
+
+        header nav a {
+            color: #FF6584;
+            text-decoration: none;
+            margin: 0 1rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 1rem;
+        }
+
+        .dashboard-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 2rem;
+            background-color: #1E1E1E;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .dashboard-table th, .dashboard-table td {
+            text-align: left;
+            padding: 1rem;
+            border-bottom: 1px solid #333;
+        }
+
+        .dashboard-table th {
+            background-color: #FF6584;
+            color: white;
+        }
+
+        .dashboard-table tr:hover {
+            background-color: #333;
+        }
+
+        .dashboard-table td {
+            color: #fff;
+        }
+
+        .dashboard-link {
+            background-color: #1E1E1E;
+            border-radius: 10px;
+            padding: 1.5rem;
+        }
+
+        .dashboard-link h2 {
+            margin: 0 0 1rem;
+            color: #FF6584;
+        }
+
+        .dashboard-link a {
+            text-decoration: none;
+            padding: 0.8rem 1.5rem;
+            background-color: #FF6584;
+            color: white;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Warranty Tracker</h1>
+        <nav>
+            <a href="/templates/main.html">Home</a>
+            <a href="/templates/products.html">Products</a>
+            <a href="/templates/dashboard.html">Dashboard</a>
+        </nav>
+    </header>
+
+    <div class="container">
+        <div class="dashboard-link">
+            <h2>Saved Products</h2>
+            <a href="/templates/main.html">Go to Home Page</a>
+        </div>
+
+        <table class="dashboard-table">
+            <thead>
+                <tr>
+                    <th>Product Name</th>
+                    <th>Brand</th>
+                    <th>Serial Number</th>
+                    <th>Purchase Date</th>
+                    <th>Warranty Expiry</th>
+                    <th>Status</th>
+                    <th>Countdown</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Smartphone</td>
+                    <td>Samsung</td>
+                    <td>SN123456789</td>
+                    <td>2023-10-12</td>
+                    <td>2024-10-12</td>
+                    <td>Active</td>
+                    <td class="countdown" data-expiry="2024-10-12T23:59:59"></td>
+                </tr>
+                <tr>
+                    <td>Washing Machine</td>
+                    <td>LG</td>
+                    <td>WM987654321</td>
+                    <td>2022-05-01</td>
+                    <td>2024-05-01</td>
+                    <td>Active</td>
+                    <td class="countdown" data-expiry="2024-05-01T23:59:59"></td>
+                </tr>
+                <tr>
+                    <td>Television</td>
+                    <td>Sony</td>
+                    <td>TV112233445</td>
+                    <td>2020-08-15</td>
+                    <td>2023-08-15</td>
+                    <td>Expired</td>
+                    <td class="countdown" data-expiry="2023-08-15T23:59:59"></td>
+                </tr>
+                <tr>
+                    <td>Laptop</td>
+                    <td>HP</td>
+                    <td>LP667788990</td>
+                    <td>2023-01-10</td>
+                    <td>2025-01-10</td>
+                    <td>Active</td>
+                    <td class="countdown" data-expiry="2025-01-10T23:59:59"></td>
+                </tr>
+                <tr>
+                    <td>Microwave Oven</td>
+                    <td>Panasonic</td>
+                    <td>MO445566778</td>
+                    <td>2023-06-18</td>
+                    <td>2025-06-18</td>
+                    <td>Active</td>
+                    <td class="countdown" data-expiry="2025-06-18T23:59:59"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        function updateCountdown() {
+            const countdownElements = document.querySelectorAll('.countdown');
+
+            countdownElements.forEach(element => {
+                const expiryDate = new Date(element.getAttribute('data-expiry'));
+                const currentDate = new Date();
+
+                const timeDifference = expiryDate - currentDate;
+
+                if (timeDifference > 0) {
+                    const days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+                    const hours = Math.floor((timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                    const minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
+                    const seconds = Math.floor((timeDifference % (1000 * 60)) / 1000);
+
+                    element.textContent = `${days} days, ${hours} hrs, ${minutes} mins, ${seconds} secs remaining`;
+                } else {
+                    element.textContent = "Expired";
+                }
+            });
+        }
+
+        // Update the countdown every second
+        setInterval(updateCountdown, 1000);
+    </script>
+</body>
+</html>

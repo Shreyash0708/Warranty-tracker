@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Track My Warranty - Add Product</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #121212;
+            color: white;
+        }
+
+        header {
+            background-color: #1E1E1E;
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header h1 {
+            color: #FF6584;
+            margin: 0;
+        }
+
+        header nav a {
+            color: #FF6584;
+            text-decoration: none;
+            margin: 0 1rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 1rem;
+        }
+
+        .add-product-form, .dashboard-link {
+            background-color: #1E1E1E;
+            border-radius: 10px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .add-product-form h2, .dashboard-link h2 {
+            margin: 0 0 1rem;
+            color: #FF6584;
+        }
+
+        .add-product-form label {
+            display: block;
+            margin: 1rem 0 0.5rem;
+        }
+
+        .add-product-form input, .add-product-form select {
+            width: 100%;
+            padding: 0.8rem;
+            margin-bottom: 1rem;
+            border: 1px solid #333;
+            border-radius: 5px;
+            background-color: #333;
+            color: white;
+        }
+
+        .add-product-form button {
+            padding: 1rem 2rem;
+            background-color: #FF6584;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .dashboard-link a {
+            text-decoration: none;
+            padding: 1rem;
+            display: inline-block;
+            background-color: #FF6584;
+            color: white;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Track My Warranty</h1>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="products.html">Products</a>
+            <a href="dashboard.html">Dashboard</a>
+        </nav>
+    </header>
+
+    <div class="container">
+        <div class="add-product-form">
+            <h2>Add New Product</h2>
+            <form>
+                <label for="product-name">Product Name</label>
+                <input type="text" id="product-name" placeholder="Enter product name">
+
+                <label for="brand">Brand</label>
+                <select id="brand">
+                    <option value="">Select Brand</option>
+                    <option value="adidas">Adidas</option>
+                    <option value="omen">Omen</option>
+                    <option value="hp">HP</option>
+                    <option value="casio">Casio</option>
+                </select>
+
+                <label for="purchase-date">Purchase Date</label>
+                <input type="date" id="purchase-date">
+
+                <label for="warranty-period">Warranty Period (in months)</label>
+                <input type="number" id="warranty-period" placeholder="Enter warranty duration">
+
+                <button type="submit">Add Product</button>
+            </form>
+        </div>
+
+        <div class="dashboard-link">
+            <h2>Scan the qr</h2>
+            <a href="scan.html">Click here to scan</a>
+        </div>
+        <div class="dashboard-link">
+            <h2>Analytical Dashboard</h2>
+            <a href="dashboard.html">Go to Dashboard</a>
+        </div>
+    </div>
+</body>
+</html>
